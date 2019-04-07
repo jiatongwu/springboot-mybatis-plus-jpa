@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.xvkang.ssm.jpadao.PersonDao;
 import com.xvkang.ssm.mapper.Person2Mapper;
 import com.xvkang.ssm.mapper.PersonCustomMapper;
 import com.xvkang.ssm.mapper.PersonMapper;
@@ -20,6 +21,8 @@ public class PersonService {
 	private PersonMapper personMapper;
 	@Autowired
 	private Person2Mapper person2Mapper;
+	@Autowired
+	private PersonDao personDao;
 
 	public void test() {
 
@@ -47,6 +50,9 @@ public class PersonService {
 		System.out.println("每页显示条数:" + page.getSize());
 		System.out.println("是否有上一页:" + page.hasPrevious());
 		System.out.println("是否有下一页:" + page.hasNext());
+		
+		List<com.xvkang.ssm.jpamodel.Person> findAll = personDao.findAll();
+		System.out.println(findAll);
 	}
 
 }
